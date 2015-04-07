@@ -1,23 +1,49 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+Route::get('ayuda', 'PaginasControler@ayuda');
+Route::get('acerca', 'PaginasControler@acerca');
 
-Route::get('/', 'WelcomeController@index');
-Route::get('contacto', 'WelcomeController@contacto');
-Route::get('acerca', 'WelcomeController@acerca');
+Route::get('index', 'ArticulosController@index');
 
-Route::get('home', 'HomeController@index');
+Route::get('articulos/listar',function()
+{
+    //Devuelve todos los articulos en un archivo json
+    $articulos = App\Articulos::all();
+    return $articulos;
+}
+);
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+Route::get('articulos/crear',function()
+{
+    //Inserta datos en la tabla
+    $articulo = new App\Articulos; //Crea en el modelo un nuevo articulo
+    $articulo-> titulo = 'Noticia 4';
+    $articulo-> descripcion= 'Descripcion del artículo';
+    $articulo-> autor='Usuario Laravel';
+    $articulo->save();
+
+}
+);
+
+Route::get('articulos/editar',function()
+{
+    //Modifica datos en la tabla
+    $articulo = App\Articulos::find(2);//Busca en el modelo el articulo 2
+    $articulo-> titulo = 'Noticia 22';
+    $articulo-> descripcion= 'Descripcion del artículo 22';
+    $articulo-> autor='Usuario Laravel 22';
+    $articulo->save();
+
+}
+);
+
+Route::get('articulos/eliminar',function()
+{
+    //Modifica datos en la tabla
+    $articulo = App\Articulos::find(4);//Busca en el modelo el articulo 2
+    $articulo->delete();
+
+}
+);
+
+
