@@ -20,5 +20,12 @@
 		{!! Form::submit('Agregar Articulo',['class' => 'btn btn-primary form control']) !!}		
 	</div class="form-group">	
 	{!! Form::close() !!}
+	@if ($errors->any())
+		<ul class="alert alert-damage">
+			@foreach($errors->all() as $error)
+				<li>{{ $error }}</li>
+			@endforeach
+		</ul>
+	@endif
 @stop
 

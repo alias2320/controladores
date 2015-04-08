@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Http\Requests\CreateArticuloRequest;
 use App\Http\Controllers\Controller;
 use Request;
 use App\Articulos;
@@ -26,10 +27,9 @@ class ArticulosController extends Controller {
 		return view('paginas/create');    	
 	}
 
-	public function store()
+	public function store(CreateArticuloRequest $request)
 	{
-		$input = Request::all();
-		Articulos::create($input);
+		Articulos::create($request->all());
 		return redirect ('articulos');
 	}
 
