@@ -1,0 +1,13 @@
+{
+	"folders":
+	[
+		{
+			"path": "/C/xampp/htdocs/controladores"
+		}
+	],
+	"settings":{
+		"xdebug":{
+			"url":"http://controladores.app"
+		}
+	}
+}
