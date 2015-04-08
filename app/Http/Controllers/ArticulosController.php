@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Request;
 use App\Articulos;
 
 class ArticulosController extends Controller {
@@ -19,6 +19,18 @@ class ArticulosController extends Controller {
 		/*$articulos = Articulos::find($id);
 		return view('paginas/show',compact('articulos')); */
 		return $id;
+	}
+
+	public function create()
+	{
+		return view('paginas/create');    	
+	}
+
+	public function store()
+	{
+		$input = Request::all();
+		Articulos::create($input);
+		return redirect ('articulos');
 	}
 
 }
